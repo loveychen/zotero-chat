@@ -5,25 +5,132 @@
   onload="Zotero.__addonInstance__.hooks.onPrefsEvent('load', { window })"
 >
   <label><html:h2 data-l10n-id="pref-title"></html:h2></label>
-  <checkbox
-    id="zotero-prefpane-__addonRef__-enable"
-    preference="enable"
-    data-l10n-id="pref-enable"
-  />
-  <hbox>
-    <html:label
-      for="zotero-prefpane-__addonRef__-input"
-      data-l10n-id="pref-input"
-    ></html:label>
+
+  <!-- API Key -->
+  <html:div style="margin-bottom: 15px">
+    <html:label style="font-weight: bold">API 密钥 *</html:label>
     <html:input
+      id="zotero-prefpane-__addonRef__-apikey"
+      type="password"
+      preference="apikey"
+      style="
+        width: 100%;
+        margin-top: 5px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+      placeholder="sk-..."
+    />
+    <html:div style="color: #666; font-size: 12px; margin-top: 5px">
+      请输入您的 OpenAI API 密钥或兼容服务的密钥
+    </html:div>
+  </html:div>
+
+  <!-- Model -->
+  <html:div style="margin-bottom: 15px">
+    <html:label style="font-weight: bold">模型名称</html:label>
+    <html:input
+      id="zotero-prefpane-__addonRef__-model"
       type="text"
-      id="zotero-prefpane-__addonRef__-input"
-      preference="input"
-    ></html:input>
-  </hbox>
-  <hbox class="virtualized-table-container" flex="1" height="300px">
-    <html:div id="__addonRef__-table-container" />
-  </hbox>
+      preference="model"
+      style="
+        width: 100%;
+        margin-top: 5px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+      placeholder="gpt-3.5-turbo"
+    />
+    <html:div style="color: #666; font-size: 12px; margin-top: 5px">
+      例如：gpt-3.5-turbo, gpt-4, deepseek-chat 等
+    </html:div>
+  </html:div>
+
+  <!-- Base URL -->
+  <html:div style="margin-bottom: 15px">
+    <html:label style="font-weight: bold">API 端点</html:label>
+    <html:input
+      id="zotero-prefpane-__addonRef__-baseurl"
+      type="text"
+      preference="baseurl"
+      style="
+        width: 100%;
+        margin-top: 5px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+      placeholder="https://api.openai.com/v1"
+    />
+    <html:div style="color: #666; font-size: 12px; margin-top: 5px">
+      OpenAI: https://api.openai.com/v1<html:br />
+      DeepSeek: https://api.deepseek.com
+    </html:div>
+  </html:div>
+
+  <!-- Temperature -->
+  <html:div style="margin-bottom: 15px">
+    <html:label style="font-weight: bold">温度 (Temperature)</html:label>
+    <html:input
+      id="zotero-prefpane-__addonRef__-temperature"
+      type="number"
+      preference="temperature"
+      min="0"
+      max="2"
+      step="0.1"
+      style="
+        width: 100px;
+        margin-top: 5px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+      placeholder="0"
+    />
+    <html:div style="color: #666; font-size: 12px; margin-top: 5px">
+      范围 0-2，越低越确定，越高越随机。建议使用 0
+    </html:div>
+  </html:div>
+
+  <!-- Max Iterations -->
+  <html:div style="margin-bottom: 15px">
+    <html:label style="font-weight: bold">最大迭代次数</html:label>
+    <html:input
+      id="zotero-prefpane-__addonRef__-maxiterations"
+      type="number"
+      preference="maxiterations"
+      min="1"
+      max="20"
+      step="1"
+      style="
+        width: 100px;
+        margin-top: 5px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+      placeholder="5"
+    />
+    <html:div style="color: #666; font-size: 12px; margin-top: 5px">
+      Agent 循环的最大迭代次数，建议 3-10
+    </html:div>
+  </html:div>
+
+  <html:div
+    style="
+      margin-top: 20px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 4px;
+    "
+  >
+    <html:div style="font-size: 13px; color: #333">
+      <html:b>提示：</html:b> 配置完成后，在阅读器右侧边栏中打开 "AI 助手"
+      标签页即可使用。
+    </html:div>
+  </html:div>
 </groupbox>
 <vbox>
   <html:label

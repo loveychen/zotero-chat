@@ -7,8 +7,11 @@
 declare namespace _ZoteroTypes {
   interface Prefs {
     PluginPrefsMap: {
-      "enable": boolean;
-      "input": string;
+      "apikey": string;
+      "model": string;
+      "baseurl": string;
+      "temperature": string;
+      "maxiterations": string;
     };
   }
 }

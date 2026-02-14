@@ -1,3 +1,8 @@
+zotero-chat-section-header =
+    .label = AI Assistant
+zotero-chat-section-sidenav =
+    .tooltiptext = AI Chat Assistant
+
 item-section-example1-head-text =
     .label = Plugin Template: Item Info
 item-section-example1-sidenav-tooltip =

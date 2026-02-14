@@ -7,7 +7,7 @@
 
 var chromeHandle;
 
-function install(data, reason) {}
+function install(data, reason) { }
 
 async function startup({ id, version, resourceURI, rootURI }, reason) {
   var aomStartup = Components.classes[
@@ -26,6 +26,15 @@ async function startup({ id, version, resourceURI, rootURI }, reason) {
    */
   const ctx = { rootURI };
   ctx._globalThis = ctx;
+
+  // Provide minimal window object to prevent "window is not defined" errors
+  // during startup, before the real window context is available
+  ctx.window = {
+    nunjucksPrecompiled: {},
+    document: {},
+    location: { href: '' },
+    navigator: { userAgent: '' },
+  };
 
   Services.scriptloader.loadSubScript(
     `${rootURI}/content/scripts/__addonRef__.js`,
@@ -55,4 +64,4 @@ async function shutdown({ id, version, resourceURI, rootURI }, reason) {
   }
 }
 
-async function uninstall(data, reason) {}
+async function uninstall(data, reason) { }

@@ -2,6 +2,7 @@ import { config } from "../package.json";
 import { ColumnOptions, DialogHelper } from "zotero-plugin-toolkit";
 import hooks from "./hooks";
 import { createZToolkit } from "./utils/ztoolkit";
+import { ReActAgent } from "./modules/agent";
 
 class Addon {
   public data: {
@@ -20,6 +21,15 @@ class Addon {
       rows: Array<{ [dataKey: string]: string }>;
     };
     dialog?: DialogHelper;
+    // Agent instance
+    agent?: ReActAgent;
+    // Current item being read (for accessing in tools)
+    currentItem?: Zotero.Item;
+    // Selected text from PDF reader (stored when user selects text)
+    readerSelection?: {
+      text: string;
+      timestamp: number;
+    };
   };
   // Lifecycle hooks
   public hooks: typeof hooks;

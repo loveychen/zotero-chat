@@ -1,3 +1,8 @@
+zotero-chat-section-header =
+    .label = AI 助手
+zotero-chat-section-sidenav =
+    .tooltiptext = AI 对话助手
+
 item-section-example1-head-text =
     .label = 插件模板: 条目信息
 item-section-example1-sidenav-tooltip =
